@@ -83,8 +83,8 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          scp  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.prod.yml root@${{ secrets.CLOUD_SERVER_IP_ADDRESS }}:/app
-          ssh -o StrictHostKeyChecking=no root@${{ secrets.CLOUD_SERVER_IP_ADDRESS }} << 'ENDSSH'
+          scp  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./.env ./docker-compose.prod.yml root@${{ secrets.CLOUD_SERVER_IP_ADDRESS }}:/app
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@${{ secrets.CLOUD_SERVER_IP_ADDRESS }} << 'ENDSSH'
             cd /app
             source .env
             docker login docker.pkg.github.com -u jonndoe -p 60bc14d53c73671571598959dc72e51bc2dc7df8
