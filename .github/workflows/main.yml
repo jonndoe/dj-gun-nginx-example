@@ -5,7 +5,7 @@ on: [push]
 env:
   WEB_IMAGE:   docker.pkg.github.com/$GITHUB_REPOSITORY/web
   NGINX_IMAGE: docker.pkg.github.com/$GITHUB_REPOSITORY/nginx
-  DB_IMAGE:    docker.pkg.github.com/$GITHUB_REPOSITORY/database
+  DB_IMAGE:    docker.pkg.github.com/$GITHUB_REPOSITORY/db
 
 jobs:
 

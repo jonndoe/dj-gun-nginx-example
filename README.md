@@ -32,7 +32,7 @@ Uses gunicorn + nginx.
     Test it out at http://localhost:1337. No mounted folders. To apply changes, the image must be re-built.
     
     
-CI/CD integration    
+CI/CD integration   pipeline 
 
 
 
