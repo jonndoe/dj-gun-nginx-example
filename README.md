@@ -36,6 +36,15 @@ Simple CI/CD pipeline implemented here as well.
 
 Local development: Django(Dockerized) + Postgres(Dockerized)
 we dont use any conda env or virtualenv here for local development, all set in docker.
+sudo docker-compose up --build  >>>>: is for local development
+
+
+sudo docker-compose -f docker-compose.prod.local.yml up --build >>>>>: is for testing production deploy 
+on local machine.
+sudo docker-compose -f docker-compose.prod.local.yml down -v    >>>>>: is for stopping cont and removing volumes
+
+
+
 
 
 
