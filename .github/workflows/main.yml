@@ -26,6 +26,7 @@ jobs:
           echo SQL_PASSWORD=${{ secrets.SQL_PASSWORD }} >> .env
           echo SQL_HOST=${{ secrets.SQL_HOST }} >> .env
           echo SQL_PORT=${{ secrets.SQL_PORT }} >> .env
+          echo DJANGO_ALLOWED_HOSTS=5.63.154.150 localhost 127.0.0.1 [::1] >> .env
       - name: Set environment variables
         run: |
           echo ::set-env name=WEB_IMAGE::${{ env.WEB_IMAGE }}
