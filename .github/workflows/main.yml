@@ -87,7 +87,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@${{ secrets.CLOUD_SERVER_IP_ADDRESS }} << 'ENDSSH'
             cd /app
             source .env
-            docker login docker.pkg.github.com -u jonndoe -p 60bc14d53c73671571598959dc72e51bc2dc7df8
+            docker login docker.pkg.github.com -u jonndoe -p ${{ secrets.API_TOKEN }}
             docker pull $WEB_IMAGE
             docker pull $NGINX_IMAGE
             docker pull $DB_IMAGE
