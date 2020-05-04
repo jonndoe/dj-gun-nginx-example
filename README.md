@@ -32,7 +32,13 @@ Uses gunicorn + nginx.
     Test it out at http://localhost:1337. No mounted folders. To apply changes, the image must be re-built.
     
     
-CI/CD integration   pipeline1
+Simple CI/CD pipeline implemented here as well.
+
+Local development: Django(Dockerized) + Postgres(Dockerized)
+we dont use any conda env or virtualenv here for local development, all set in docker.
+
+
+
 
 
 
