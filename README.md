@@ -43,6 +43,68 @@ sudo docker-compose -f docker-compose.prod.local.yml up --build >>>>>: is for te
 on local machine.
 sudo docker-compose -f docker-compose.prod.local.yml down -v    >>>>>: is for stopping cont and removing volumes
 
+SOME USEFULL COMMANDS:
+
+ssh -o StrictHostKeyCheking=no root@REMOTE_IP_ADDRESS whoami
+if we have error: >>>> add '-o UserKnownHostsFile=/dev/null '  >>>>
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@REMOTE_IP_ADDRESS
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@REMOTE_IP_ADDRESS mkdir /app
+scp  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./app ./nginx ./postgresql ./.env.prod.db ./.env.prod ./docker-compose.prod.local.yml root@55.69.251.150:/apptest
+
+sudo docker login docker.pkg.github.com -u jonndoe -p YOUR_API_TOKEN_GITHUB
+if we have error: >>>> sudo apt install gnupg2 pass
+
+
+ON REMOTE HOST:(AS ROOT):
+
+$ ssh-keygen -t rsa
+$ cat ~/.ssh/id_rsa.pub
+$ vi ~/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/id_rsa
+
+Copy the contents of the private key:
+$ cat ~/.ssh/id_rsa
+
+Exit from the SSH session, and then set the key as an environment variable on your local machine:
+export PRIVATE_KEY='-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA04up8hoqzS1+APIB0RhjXyObwHQnOzhAk5Bd7mhkSbPkyhP1
+...
+iWlX9HNavcydATJc1f0DpzF0u4zY8PY24RVoW8vk+bJANPp1o2IAkeajCaF3w9nf
+q/SyqAWVmvwYuIhDiHDaV2A==
+-----END RSA PRIVATE KEY-----'
+ 
+Add the key to the ssh-agent:
+$ ssh-add - <<< "${PRIVATE_KEY}"
+
+To test, run:
+$ ssh -o StrictHostKeyChecking=no root@<YOUR_INSTANCE_IP> whoami
+root
+
+
+
+
+VOLUMES:
+Minimal example to test if volumes works on you host machine(taken from Stackoverflow):
+
+tester:
+    image: alpine
+    volumes:
+        - "./hostmount/:/var/lib/graphite/storage/whisper"
+    command: "sh -c 'echo hello >> /var/lib/graphite/storage/whisper/blabla'"
+
+This will create a directory hostmount on the host, and write a "blabla" file in it, containing "hello";
+
+$ docker-compose up
+Creating repro24508_tester_1
+Attaching to repro24508_tester_1
+repro24508_tester_1 exited with code 0
+
+$ cat hostmount/blabla
+hello
+
+
+
 
 
 
