@@ -1,4 +1,4 @@
-example deployment based on testdriven.io blog
+example deployment based on testdriven.io blog record:
 
 Dockerizing Django with Postgres, Gunicorn, and Nginx
 Want to learn how to build this?
