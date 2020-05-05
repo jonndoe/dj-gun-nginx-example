@@ -1,4 +1,4 @@
-FROM nginx:1.17.4-alpine
+FROM postgres:12.0-alpine
 
 RUN ls -la
 
